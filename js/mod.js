@@ -53,6 +53,8 @@ function getPointGen() {
 	if (hasUpgrade('h', 13) && (!hasUpgrade('h', 14))) gain = gain.mul(player.points.sub(new Decimal("1e8436800")).max(0).div(new Decimal("1e8436800")).add(1).pow(0.2))
 	if (hasUpgrade('h', 14)) gain = gain.mul(player.points.sub(new Decimal("1e8350000")).max(0).div(new Decimal("1e8350000")).add(1).pow(0.2))
 	if (hasUpgrade('h', 25)) gain = gain.pow(1.05)
+	if (hasMilestone('GJ', 4)) gain = gain.pow(1.02)
+	if(gain.eq(0))gain=new Decimal("1") //防止坏档
 	return gain
 }
 
